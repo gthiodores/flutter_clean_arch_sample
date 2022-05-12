@@ -17,7 +17,7 @@ class TodoListBloc extends Bloc<TodoListEvent, TodoListState> {
       final result = await usecase.execute();
 
       result.fold(
-        (exception) => emit(TodoListError('Error')),
+        (exception) => emit(TodoListError(exception)),
         (data) => emit(TodoListHasData(data)),
       );
     });

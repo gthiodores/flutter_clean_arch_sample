@@ -9,13 +9,13 @@ class TodoRepositoryImpl extends TodoRepository {
   TodoRepositoryImpl(this.remoteDataSource);
 
   @override
-  Future<Either<Exception, List<Todo>>> getTodoList() async {
+  Future<Either<String, List<Todo>>> getTodoList() async {
     try {
       final result = await remoteDataSource.getTodoList();
       final todoList = result.map((e) => e.toDomainModel()).toList();
       return Right(todoList);
-    } on Exception catch (e) {
-      return Left(e);
+    } catch (e) {
+      return const Left('Failed to get todos');
     }
   }
 }

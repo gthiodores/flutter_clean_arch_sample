@@ -7,7 +7,7 @@ class GetTodos {
 
   const GetTodos(this.repository);
 
-  Future<Either<Exception, List<Todo>>> execute() {
+  Future<Either<String, List<Todo>>> execute() {
     return repository.getTodoList();
   }
 }

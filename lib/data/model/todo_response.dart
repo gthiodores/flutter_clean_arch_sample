@@ -1,6 +1,7 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter_clean_arch_sample/domain/model/todo.dart';
 
-class TodoResponse {
+class TodoResponse extends Equatable{
   final int userId;
   final int id;
   final String title;
@@ -21,4 +22,7 @@ class TodoResponse {
       );
 
   Todo toDomainModel() => Todo(title: title, completed: completed);
+
+  @override
+  List<Object?> get props => [userId, id, title, completed];
 }
